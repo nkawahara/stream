@@ -1,0 +1,53 @@
+* 調査URL
+  やってみると意外とカンタン！TwitterAPIを使ってつぶやきデータを取得してみた。
+  API1.1でGetする
+  http://webnaut.jp/develop/633.html
+  
+
+  Developer　登録
+  グローバルアクセス可能なサイト必須
+  https://apps.twitter.com/app/new
+
+
+  PythonでPublic Streamをとってくるやつ（TISの人
+  https://github.com/icoxfog417/nlp100/blob/master/prepare/tweets.py
+
+  
+  PythonでPublicStream
+
+  Ruby Twitter Gem 1.1.1 簡易リファレンス
+  https://gist.github.com/yhara/1889303
+
+
+  Nginx + python3.4
+  http://qiita.com/5t111111/items/3f2065699fbc4b43c4a8
+  
+  My Project
+  https://github.com/nkawahara/stream
+
+  Rubyでやってみる
+  http://hashikure.blogspot.jp/2013/05/ruby-gem-scrubyt-cannot-load-such-file.html
+
+* 環境構築
+  Ruby TweetStream
+  sudo apt-get install ruby-dev   
+  gem instlal eventmachine ////
+
+* Redis node
+  View
+  https://github.com/tblobaum/redis-stream
+  これでViewの部分が作れそう
+  
+  SSHの設定したい
+
+* Web View
+
+  Express 4 をはじめよう
+  Nodejs + css
+  http://qiita.com/hoshi-takanori/items/2128a6cf1dbb533379a2
+
+  http://www.ibm.com/developerworks/jp/web/library/wa-bluemix-html5chat/
+
+  StyleDocco css微妙っぽい
+  http://ameblo.jp/ca-1pixel/entry-11453624925.html
+  
