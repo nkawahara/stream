@@ -42,8 +42,8 @@ def keyStream(num,keyword)
    if status.user.lang == "ja" && !status.text.index("RT")
       if nil != status.text.match(/\#/)
 #        puts "#{status.user.screen_name}:( #{status.id} )  #{status.text}"
-        parser_tag(status)
         @list << ["#{status.user.screen_name}","#{status.text}"] 
+        parser_tag(status)
       end
     end
   end
@@ -52,9 +52,15 @@ end
 
 ## タグパーサ
 def parser_tag(status)
+puts   status.text
+#
+#puts status.text.split(/\#/)
+#
+  
   ## To Do
   ## このへんにタグを全て抽出して、
   ## 再帰的に全てのタグごとに関数を読む記述をする
+  ## 
 end
 
 
