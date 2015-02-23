@@ -28,6 +28,11 @@
   Rubyでやってみる
   http://hashikure.blogspot.jp/2013/05/ruby-gem-scrubyt-cannot-load-such-file.html
 
+  Redisにデータを格納
+  Redis-objectsを利用することにした
+  http://d.hatena.ne.jp/riocampos+tech/20130930/p1
+  
+
 * 環境構築
   Ruby TweetStream
   sudo apt-get install ruby-dev   
@@ -51,3 +56,13 @@
   StyleDocco css微妙っぽい
   http://ameblo.jp/ca-1pixel/entry-11453624925.html
   
+  BootStrapでcss吐いてもらった
+  http://bootswatch.com/cerulean/
+  http://bootswatch.com/cerulean/bootstrap.css
+  
+
+* gitignore
+  giboだよねー
+  
+https://github.com/simonwhitaker/gibo
+
