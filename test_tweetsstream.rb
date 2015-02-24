@@ -42,7 +42,7 @@ def keyStream(num,keyword)
    if status.user.lang == "ja" && !status.text.index("RT")
       if nil != status.text.match(/\#/)
 #        puts "#{status.user.screen_name}:( #{status.id} )  #{status.text}"
-        @list << ["#{status.user.screen_name}","#{status.text}"] 
+        @list << "#{status.user.screen_name}" + "#{status.text}"
         parser_tag(status)
       end
     end
