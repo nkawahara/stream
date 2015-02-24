@@ -39,16 +39,14 @@ def keyStream(num,keyword)
 #  redis_url = "redis://127.0.0.1:6379/#{num}"
 #  Redis.current = Redis.new(url: redis_url)
 #  @list = Redis::List.new("list_#{keyword}", :marshal => true)
-  TweetStream::Client.new.track("#{keyword}") do |status|
-   if status.user.lang == "ja" && !status.text.index("RT")
-      if nil != status.text.match(/\#/)
-#        puts "#{status.user.screen_name}:( #{status.id} )  #{status.text}"
-#        @list << "#{status.user.screen_name}" + "#{status.text}"
-         temp =  {:msg => "#{status.text}", :nickname => "status.user.screen_name", :when=> Time.now}
-         #puts temp.to_json
-        redis.lpush "list_#{keyword}", "#{temp.to_json}"
-         #@list << temp.to_json
-#        parser_tag(status)
+  TweetStream::Client.new.track("nhk") do |status|
+   if status.user.lang == "ja"# && !status.text.index("RT")
+ #     if nil != status.text.match(/\nhk/)
+        if status.media?
+          temp = {:text => "#{status.text}", :name=> "#{status.user.name}", :screen_name=> "#{status.user.screen_name}", :created_at => "#{status.created_at}", :url => "#{status.url}", :media_url => "#{status.media[0].media_url}"}
+          puts temp
+          redis.lpush "list_#{keyword}", "#{temp.to_json}"
+  #      end
       end
     end
   end

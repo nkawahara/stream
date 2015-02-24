@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var socket = io(), nickname, msgList = $('#messages');
+    var socket = io(), nickname, textList = $('#messages');
     // Check if nickname stored in localStorage
     if('localStorage' in window && localStorage.getItem('nickname')) {
 	nickname = localStorage.getItem('nickname');
@@ -16,29 +16,29 @@ $(document).ready(function() {
     var newMessage = function(data) {
 	var who = $('<div class="who">').text(data.nickname),
 	when = $('<div class="when">').text(new Date().toString().substr(0, 24)),
-	msg = $('<div class="msg">').text(data.msg),
+	text = $('<div class="text">').text(data.text),
 	header = $('<div class="header clearfix">').append(who).append(when),
-	li = $('<li>').append(header).append(msg);
-	msgList.prepend(li);
+	li = $('<li>').append(header).append(text);
+	textList.prepend(li);
     };
     // Handle the form to submit a new message
     $('form').submit(function(e) {
-	var msgField = $('#msg'),
-	data = { msg: msgField.val(), nickname: nickname, when: new Date() };
+	var textField = $('#text'),
+	data = { text: textField.val(), name: nickname, created_at: new Date() };
 	e.preventDefault();
 	// Send message to Socket.io server
-	socket.emit('msg', data);
+	socket.emit('text', data);
 	// Add message to the page
 	newMessage(data);
 	// Clear the message field
-	msgField.val('');
+	textField.val('');
     });
     // When a message is received from the server
     // add it to the page using newMessage()
-    socket.on('msg', function(data) { newMessage(data); });
+    socket.on('text', function(data) { newMessage(data); });
     // When a notice is received from the server
     // (user joins or disconnects), add it to the page
-    socket.on('notice', function(msg) {
-	msgList.prepend($('<div class="notice">').text(msg));
+    socket.on('notice', function(text) {
+	textList.prepend($('<div class="notice">').text(text));
     });
 });

@@ -45,6 +45,11 @@
   
   SSHの設定したい
 
+  http://www.ibm.com/developerworks/jp/web/library/wa-bluemix-html5chat/wa-bluemix-html5chat-pdf.pdf
+ 
+  http://redis.shibu.jp/commandreference/lists.html
+
+
 * Web View
 
   Express 4 をはじめよう
@@ -66,3 +71,6 @@
   
 https://github.com/simonwhitaker/gibo
 
+
+* JSON
+  https://code.google.com/p/shogi-format/wiki/JSON_introduction

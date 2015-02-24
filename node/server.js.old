@@ -1,4 +1,4 @@
-// Startup Express App
+// Startup Express Apps
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
@@ -56,7 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // handle HTTP GET request to the "/" URL
 app.get('/', function(req, res) {
-  // Get the 100 most recent messages from Redis
+  // Get the 100 most recent list_pic from Redis
   var messages = redisClient.lrange('list_pic', 0, 99, function(err, reply) {
     if(!err) {        
       var result = [];

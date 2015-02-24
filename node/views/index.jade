@@ -4,7 +4,8 @@ html(lang='en')
     meta(charset='utf-8')
     title Stream
     meta(name='viewport', content='initial-scale=1.0, width=device-width, \
-      height=device-height, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+      height=device-height, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no') 
+    meta(http-equiv='Refresh', content='7')
     link(rel='stylesheet', href='/stylesheets/bootswatch.css')    
     link(rel='stylesheet', href='/stylesheets/style.css')    
   body
@@ -15,17 +16,24 @@ html(lang='en')
     br
     br
     form
-      input(id='msg', autocomplete='off', autofocus)
+      input(id='text', autocomplete='off', autofocus)
       button(type='submit') Send
     ul#messages
       - for(var i=0,ln=messages.length;i<ln;i++)      
           tr
             td(style='width: '+(100/4)+'%')
-              .header.clearfix
-                .who= messages[i].nickname
-                .when= new Date(messages[i].when).toString().substr(0, 24)
-              .msg= messages[i].msg
-              br
+              //.header.clearfix
+              //  .who= messages[i].name
+              //  .when= new Date(messages[i].created_at).toString().substr(0, 24)
+              //  .text= messages[i].text
+              blockquote.twitter-tweet(lang='ja')
+                p
+                  | #{messages[i].text} 
+                  a(href="#{messages[i].media_url}") #{messages[i].media_url} 
+                |  #{messages[i].name}  (#{messages[i].screen_name} )
+                a(href='#{messages[i].url}') #{messages[i].created_at}
+              script(async='', src='//platform.twitter.com/widgets.js', charset='utf-8')
+
     script(src='//cdn.jsdelivr.net/jquery/2.1.1/jquery.min.js')
     script(src='/socket.io/socket.io.js')
     script(src='/javascripts/client.js')
