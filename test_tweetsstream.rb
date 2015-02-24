@@ -3,7 +3,7 @@
 #### Global Configuration
 ## Require
 require 'tweetstream'
-require 'redis-objects'
+require 'redis'
 
 ## TweetStream data
 fp = open(".config")
@@ -35,15 +35,20 @@ end
 ## 2.各タグごとのストリーミングを作る関数を呼ぶ
 ##
 def keyStream(num,keyword)
-  redis_url = "redis://127.0.0.1:6379/#{num}"
-  Redis.current = Redis.new(url: redis_url)
-  @list = Redis::List.new("list_#{keyword}", :marshal => true)
+  redis = Redis.new
+#  redis_url = "redis://127.0.0.1:6379/#{num}"
+#  Redis.current = Redis.new(url: redis_url)
+#  @list = Redis::List.new("list_#{keyword}", :marshal => true)
   TweetStream::Client.new.track("#{keyword}") do |status|
    if status.user.lang == "ja" && !status.text.index("RT")
       if nil != status.text.match(/\#/)
 #        puts "#{status.user.screen_name}:( #{status.id} )  #{status.text}"
-        @list << "#{status.user.screen_name}" + "#{status.text}"
-        parser_tag(status)
+#        @list << "#{status.user.screen_name}" + "#{status.text}"
+         temp =  {:msg => "#{status.text}", :nickname => "status.user.screen_name", :when=> Time.now}
+         #puts temp.to_json
+        redis.lpush "list_#{keyword}", "#{temp.to_json}"
+         #@list << temp.to_json
+#        parser_tag(status)
       end
     end
   end
