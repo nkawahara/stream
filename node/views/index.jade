@@ -10,16 +10,8 @@ html(lang='en')
     link(rel='stylesheet', href='/stylesheets/style.css')    
   body
     h1 Stream
-    Text Waht's　This?
-    br
-    SNS Photo Stream for Enjoy 2020 Olympic 
-    br
-    br
-    form
-      input(id='text', autocomplete='off', autofocus)
-      button(type='submit') Send
-    ul#messages
-      - for(var i=0,ln=messages.length;i<5;i++)      
+    ln#messages
+      - for(var i=0,ln=messages.length;i<20;i++)      
           tr
             td(style='width: '+(100/4)+'%')
               blockquote.twitter-tweet(lang='ja')
@@ -29,12 +21,6 @@ html(lang='en')
                 |  #{messages[i].name}  (#{messages[i].screen_name} )
                 a(href='#{messages[i].url}') #{messages[i].created_at}
               script(async='', src='//platform.twitter.com/widgets.js', charset='utf-8')
-
-  - for(var i=0,ln=messages.length;i<ln;i++)      
-
-
-
-
 
     script(src='//cdn.jsdelivr.net/jquery/2.1.1/jquery.min.js')
     script(src='/socket.io/socket.io.js')

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+/*
     var socket = io(), nickname, textList = $('#messages');
     // Check if nickname stored in localStorage
     if('localStorage' in window && localStorage.getItem('nickname')) {
@@ -41,4 +42,5 @@ $(document).ready(function() {
     socket.on('notice', function(text) {
 	textList.prepend($('<div class="notice">').text(text));
     });
+*/
 });

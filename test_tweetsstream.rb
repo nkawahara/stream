@@ -39,7 +39,7 @@ def keyStream(num,keyword)
 #  Redis.current = Redis.new(url: redis_url)
 #  @list = Redis::List.new("list_#{keyword}", :marshal => true)
   TweetStream::Client.new.track("nhk") do |status|
-   if status.user.lang == "ja"# && !status.text.index("RT")
+   if status.user.lang == "ja" && !status.text.index("RT")
  #     if nil != status.text.match(/\nhk/)
         if status.media?
           temp = {:text => "#{status.text}", :name=> "#{status.user.name}", :screen_name=> "#{status.user.screen_name}", :created_at => "#{status.created_at}", :url => "#{status.url}", :media_url => "#{status.media[0].media_url}"}

@@ -77,18 +77,19 @@ io.on('connection', function(socket) {
     redisClient.ltrim('list_pic', 0, 99);  
     socket.broadcast.emit('text', data);        
   });
-
+    
   // When a user joins the chat, send a notice
   // to all users except the originating client
   socket.on('join', function(nickname) {
     // Attach the user's nickname to the socket
-    socket.nickname = nickname;
-    socket.broadcast.emit('notice', nickname + ' has joined the chat.');
+  //  socket.nickname = nickname;
+  //  socket.broadcast.emit('notice', nickname + ' has joined the chat.');
   });
+  
 
   // When a user disconnects, send a notice
   // to all users except the originating client
   socket.on('disconnect', function() {
-    socket.broadcast.emit('notice', socket.nickname + ' has left the chat.');
+  //  socket.broadcast.emit('notice', socket.nickname + ' has left the chat.');
   });
 });
